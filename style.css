@@ -1,0 +1,161 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #89f7fe, #66a6ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    animation: gradientBackground 6s infinite alternate;
+}
+
+@keyframes gradientBackground {
+    0% {
+        background: linear-gradient(120deg, #89f7fe, #66a6ff);
+    }
+    50% {
+        background: linear-gradient(120deg, #66a6ff, #ff9a9e);
+    }
+    100% {
+        background: linear-gradient(120deg, #ff9a9e, #fbc2eb);
+    }
+}
+
+div {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    animation: popIn 0.8s ease-out;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+select {
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    position: relative;
+}
+
+select:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+select:focus {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    border-color: #66a6ff;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+}
+
+select::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #fff;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+option {
+    font-size: 16px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: none;
+    outline: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+option:hover {
+    background: rgba(102, 166, 255, 0.9);
+    color: #fff;
+}
+
+option:focus {
+    background: rgba(102, 166, 255, 1);
+    color: #fff;
+}
+
+#resultWeather {
+    margin-top: 20px;
+    font-size: 22px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards, bounce 1s ease-out;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#resultWeather {
+    transition: color 0.5s ease, transform 0.5s ease;
+}
+
+select:focus + #resultWeather {
+    transform: scale(1.05);
+    color: #ffe600;
+}
